@@ -1,0 +1,57 @@
+<% include template/headerHome %>
+
+    <body>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 jumbotron text-center" style="background-image: url('images/bg-01.jpg');">
+                    <h1 class="display-3">
+                        <%= title %>
+                    </h1>
+                </div>
+                <% data.forEach(function(motphantu){ %>
+                    <div class="card  mb-5 mr-4 ml-5 col-3" style="background-image: url('images/bg-01.jpg');">
+                        <div class="card-body ">
+                            <h8 class="card-title">Email:
+                                <%= motphantu.email %>
+                            </h8><br>
+                            <h8 class="card-title">Username:
+                                <%= motphantu.username %>
+                            </h8><br>
+                            <h8 class="card-title">Password:
+                                <%= motphantu.password %>
+                            </h8><br>
+                            <div class="text-center">
+                                <a href="/insertAccount">
+                                    <i class="fas fa-user-plus"></i>
+                                </a>
+                                <a href="/updateAccount/<%= motphantu._id %>">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </a>
+                                <a onclick="return xoahaykhong('Bạn có chắc chắn xoá không') ; " href="/deleteAccount/<%= motphantu._id %>">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <% include template/footer%>
+            <script type="text/javascript">
+                function xoahaykhong(tinnhan) {
+                    if (window.confirm(tinnhan) == true) {
+                        return true;
+                    }
+                    return false;
+                }
+            </script>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </body>
+
+    </html>
